@@ -1,5 +1,9 @@
 grammar Task1;
 
+@header {
+package tk.dadle8.antlr4;
+}
+
 CHAR : '[^\']';
 HEX : '0'[xX][0-9A-Fa-f]+;
 BITS : '0'[bB][01]+;
