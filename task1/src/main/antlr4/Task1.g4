@@ -13,41 +13,41 @@ IDENTIFIER : [a-zA-Z_]([a-zA-Z_0-9])*;
 STR : '"' (~('\\'|'"'))* '"' ;
 argDef : IDENTIFIER ('as' typeRef)?;
 built: 'bool'|'byte'|'int'|'uint'|'long'|'ulong'|'char'|'string';
-binOp : '>' | '<' | '=';
-unOp : '!';
+BINOP : '>' | '<' | '=';
+UNOP : '!';
 lit : BOOL|STR|CHAR|HEX|BITS|DEC;
 WS : [ \t\r\n]+ -> skip;
-COMMENT 
+COMMENT
     : '/*' .*? '*/'  -> skip
     ;
 
 
 source: sourceItem* EOF;
 
-sourceItem : funcDef; 
+sourceItem : funcDef;
 
 funcDef : 'function' funcSignature statement* 'end' 'function';
 
 funcSignature : IDENTIFIER '('  (argDef (',' argDef)*)? ')' ('as' typeRef)?;
 
 typeRef
-    : built EOF #builtin
+    : built #builtin
     | IDENTIFIER #custom
     | typeRef '(' (',')* ')' #array
     ;
 
 statement
-    : 'dim' (IDENTIFIER (',' IDENTIFIER)*)? 'as' typeRef EOF #statementVar
+    : 'dim' (IDENTIFIER (',' IDENTIFIER)*)? 'as' typeRef #statementVar
     | 'if' expr 'then' statement* ('else' statement*)? 'end' 'if' #statementIf
     | 'while' expr statement* 'wend' #statementWhile
-    | 'do' statement* 'loop' ('while'|'until') expr #statementDo 
+    | 'do' statement* 'loop' ('while'|'until') expr #statementDo
     | 'break' #statementBreak
     | expr ';' #exp
     ;
 
 expr
-    : expr binOp expr EOF #binary
-    | unOp expr #unari
+    : expr BINOP expr #binary
+    | UNOP expr #unari
     |'(' expr ')' #braces
     | expr '(' (expr (',' expr)*)? ')' #callOrIndexer
     | IDENTIFIER #place

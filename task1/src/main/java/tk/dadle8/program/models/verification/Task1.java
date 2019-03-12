@@ -14,12 +14,13 @@ public class Task1 {
     public static void main(String[] args) {
         System.out.println("Task1");
 
-
-        Task1Lexer lexer = new Task1Lexer(CharStreams.fromString("function test(first, second) end function"));
+        Task1Lexer lexer = new Task1Lexer(CharStreams.fromString("function test(first, second) if a > b then a = c; end if end function"));
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         Task1Parser parser = new Task1Parser(tokens);
         ParseTree tree = parser.source();
         ParseTreeWalker walker = new ParseTreeWalker();
         walker.walk(new Task1BaseListener(), tree);
+
+        System.out.println(tree.toStringTree());
     }
 }
