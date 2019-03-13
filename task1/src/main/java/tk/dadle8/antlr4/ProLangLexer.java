@@ -1,5 +1,3 @@
-// Generated from Task1.g4 by ANTLR 4.7.2
-
 package tk.dadle8.antlr4;
 
 import org.antlr.v4.runtime.Lexer;
@@ -12,7 +10,7 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class Task1Lexer extends Lexer {
+public class ProLangLexer extends Lexer {
 	static { RuntimeMetaData.checkVersion("4.7.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -96,13 +94,13 @@ public class Task1Lexer extends Lexer {
 	}
 
 
-	public Task1Lexer(CharStream input) {
+	public ProLangLexer(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override
-	public String getGrammarFileName() { return "Task1.g4"; }
+	public String getGrammarFileName() { return "ProLang.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }

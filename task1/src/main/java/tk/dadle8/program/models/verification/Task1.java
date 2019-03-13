@@ -5,22 +5,28 @@ import org.antlr.v4.runtime.CommonTokenStream;
 
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
-import tk.dadle8.antlr4.Task1BaseListener;
-import tk.dadle8.antlr4.Task1Lexer;
-import tk.dadle8.antlr4.Task1Parser;
+import org.antlr.v4.runtime.tree.Trees;
+import tk.dadle8.antlr4.ProLangLexer;
+import tk.dadle8.antlr4.ProLangParser;
+import tk.dadle8.program.models.verification.parser.SpecificListener;
+import tk.dadle8.program.models.verification.parser.TreeUtils;
+
+import java.util.List;
 
 public class Task1 {
 
     public static void main(String[] args) {
         System.out.println("Task1");
 
-        Task1Lexer lexer = new Task1Lexer(CharStreams.fromString("function test(first, second) if a > b then a = c; end if end function"));
+        ProLangLexer lexer = new ProLangLexer(CharStreams.fromString("function test(first, second) if a > b then a = c; end if end function"));
         CommonTokenStream tokens = new CommonTokenStream(lexer);
-        Task1Parser parser = new Task1Parser(tokens);
+        ProLangParser parser = new ProLangParser(tokens);
         ParseTree tree = parser.source();
         ParseTreeWalker walker = new ParseTreeWalker();
-        walker.walk(new Task1BaseListener(), tree);
+        walker.walk(new SpecificListener(), tree);
 
-        System.out.println(tree.toStringTree());
+        System.out.println(TreeUtils.toPrettyTree(tree, List.of(parser.getRuleNames())));
+
+        System.out.println(Trees.toStringTree(tree, parser));
     }
 }

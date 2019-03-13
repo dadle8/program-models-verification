@@ -1,5 +1,3 @@
-// Generated from Task1.g4 by ANTLR 4.7.2
-
 package tk.dadle8.antlr4;
 
 
@@ -8,275 +6,275 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
- * This class provides an empty implementation of {@link Task1Listener},
+ * This class provides an empty implementation of {@link ProLangListener},
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
-public class Task1BaseListener implements Task1Listener {
+public class ProLangBaseListener implements ProLangListener {
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArgDef(Task1Parser.ArgDefContext ctx) { }
+	@Override public void enterArgDef(ProLangParser.ArgDefContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArgDef(Task1Parser.ArgDefContext ctx) { }
+	@Override public void exitArgDef(ProLangParser.ArgDefContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBuilt(Task1Parser.BuiltContext ctx) { }
+	@Override public void enterBuilt(ProLangParser.BuiltContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBuilt(Task1Parser.BuiltContext ctx) { }
+	@Override public void exitBuilt(ProLangParser.BuiltContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLit(Task1Parser.LitContext ctx) { }
+	@Override public void enterLit(ProLangParser.LitContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLit(Task1Parser.LitContext ctx) { }
+	@Override public void exitLit(ProLangParser.LitContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSource(Task1Parser.SourceContext ctx) { }
+	@Override public void enterSource(ProLangParser.SourceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSource(Task1Parser.SourceContext ctx) { }
+	@Override public void exitSource(ProLangParser.SourceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSourceItem(Task1Parser.SourceItemContext ctx) { }
+	@Override public void enterSourceItem(ProLangParser.SourceItemContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSourceItem(Task1Parser.SourceItemContext ctx) { }
+	@Override public void exitSourceItem(ProLangParser.SourceItemContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFuncDef(Task1Parser.FuncDefContext ctx) { }
+	@Override public void enterFuncDef(ProLangParser.FuncDefContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFuncDef(Task1Parser.FuncDefContext ctx) { }
+	@Override public void exitFuncDef(ProLangParser.FuncDefContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFuncSignature(Task1Parser.FuncSignatureContext ctx) { }
+	@Override public void enterFuncSignature(ProLangParser.FuncSignatureContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFuncSignature(Task1Parser.FuncSignatureContext ctx) { }
+	@Override public void exitFuncSignature(ProLangParser.FuncSignatureContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArray(Task1Parser.ArrayContext ctx) { }
+	@Override public void enterArray(ProLangParser.ArrayContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArray(Task1Parser.ArrayContext ctx) { }
+	@Override public void exitArray(ProLangParser.ArrayContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBuiltin(Task1Parser.BuiltinContext ctx) { }
+	@Override public void enterBuiltin(ProLangParser.BuiltinContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBuiltin(Task1Parser.BuiltinContext ctx) { }
+	@Override public void exitBuiltin(ProLangParser.BuiltinContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCustom(Task1Parser.CustomContext ctx) { }
+	@Override public void enterCustom(ProLangParser.CustomContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCustom(Task1Parser.CustomContext ctx) { }
+	@Override public void exitCustom(ProLangParser.CustomContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatementVar(Task1Parser.StatementVarContext ctx) { }
+	@Override public void enterStatementVar(ProLangParser.StatementVarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatementVar(Task1Parser.StatementVarContext ctx) { }
+	@Override public void exitStatementVar(ProLangParser.StatementVarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatementIf(Task1Parser.StatementIfContext ctx) { }
+	@Override public void enterStatementIf(ProLangParser.StatementIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatementIf(Task1Parser.StatementIfContext ctx) { }
+	@Override public void exitStatementIf(ProLangParser.StatementIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatementWhile(Task1Parser.StatementWhileContext ctx) { }
+	@Override public void enterStatementWhile(ProLangParser.StatementWhileContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatementWhile(Task1Parser.StatementWhileContext ctx) { }
+	@Override public void exitStatementWhile(ProLangParser.StatementWhileContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatementDo(Task1Parser.StatementDoContext ctx) { }
+	@Override public void enterStatementDo(ProLangParser.StatementDoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatementDo(Task1Parser.StatementDoContext ctx) { }
+	@Override public void exitStatementDo(ProLangParser.StatementDoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatementBreak(Task1Parser.StatementBreakContext ctx) { }
+	@Override public void enterStatementBreak(ProLangParser.StatementBreakContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatementBreak(Task1Parser.StatementBreakContext ctx) { }
+	@Override public void exitStatementBreak(ProLangParser.StatementBreakContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExp(Task1Parser.ExpContext ctx) { }
+	@Override public void enterExp(ProLangParser.ExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExp(Task1Parser.ExpContext ctx) { }
+	@Override public void exitExp(ProLangParser.ExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBinary(Task1Parser.BinaryContext ctx) { }
+	@Override public void enterBinary(ProLangParser.BinaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBinary(Task1Parser.BinaryContext ctx) { }
+	@Override public void exitBinary(ProLangParser.BinaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnari(Task1Parser.UnariContext ctx) { }
+	@Override public void enterUnari(ProLangParser.UnariContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnari(Task1Parser.UnariContext ctx) { }
+	@Override public void exitUnari(ProLangParser.UnariContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPlace(Task1Parser.PlaceContext ctx) { }
+	@Override public void enterPlace(ProLangParser.PlaceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPlace(Task1Parser.PlaceContext ctx) { }
+	@Override public void exitPlace(ProLangParser.PlaceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCallOrIndexer(Task1Parser.CallOrIndexerContext ctx) { }
+	@Override public void enterCallOrIndexer(ProLangParser.CallOrIndexerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCallOrIndexer(Task1Parser.CallOrIndexerContext ctx) { }
+	@Override public void exitCallOrIndexer(ProLangParser.CallOrIndexerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBraces(Task1Parser.BracesContext ctx) { }
+	@Override public void enterBraces(ProLangParser.BracesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBraces(Task1Parser.BracesContext ctx) { }
+	@Override public void exitBraces(ProLangParser.BracesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLiteral(Task1Parser.LiteralContext ctx) { }
+	@Override public void enterLiteral(ProLangParser.LiteralContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLiteral(Task1Parser.LiteralContext ctx) { }
+	@Override public void exitLiteral(ProLangParser.LiteralContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

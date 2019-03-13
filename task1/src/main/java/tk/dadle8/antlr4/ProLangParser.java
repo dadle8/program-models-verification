@@ -1,5 +1,3 @@
-// Generated from Task1.g4 by ANTLR 4.7.2
-
 package tk.dadle8.antlr4;
 
 import org.antlr.v4.runtime.atn.*;
@@ -12,7 +10,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class Task1Parser extends Parser {
+public class ProLangParser extends Parser {
 	static { RuntimeMetaData.checkVersion("4.7.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -89,7 +87,7 @@ public class Task1Parser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "Task1.g4"; }
+	public String getGrammarFileName() { return "ProLang.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -100,13 +98,13 @@ public class Task1Parser extends Parser {
 	@Override
 	public ATN getATN() { return _ATN; }
 
-	public Task1Parser(TokenStream input) {
+	public ProLangParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	public static class ArgDefContext extends ParserRuleContext {
-		public TerminalNode IDENTIFIER() { return getToken(Task1Parser.IDENTIFIER, 0); }
+		public TerminalNode IDENTIFIER() { return getToken(ProLangParser.IDENTIFIER, 0); }
 		public TypeRefContext typeRef() {
 			return getRuleContext(TypeRefContext.class,0);
 		}
@@ -116,11 +114,16 @@ public class Task1Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_argDef; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterArgDef(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterArgDef(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitArgDef(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitArgDef(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitArgDef(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -165,11 +168,16 @@ public class Task1Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_built; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterBuilt(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterBuilt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitBuilt(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitBuilt(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitBuilt(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -204,23 +212,28 @@ public class Task1Parser extends Parser {
 	}
 
 	public static class LitContext extends ParserRuleContext {
-		public TerminalNode BOOL() { return getToken(Task1Parser.BOOL, 0); }
-		public TerminalNode STR() { return getToken(Task1Parser.STR, 0); }
-		public TerminalNode CHAR() { return getToken(Task1Parser.CHAR, 0); }
-		public TerminalNode HEX() { return getToken(Task1Parser.HEX, 0); }
-		public TerminalNode BITS() { return getToken(Task1Parser.BITS, 0); }
-		public TerminalNode DEC() { return getToken(Task1Parser.DEC, 0); }
+		public TerminalNode BOOL() { return getToken(ProLangParser.BOOL, 0); }
+		public TerminalNode STR() { return getToken(ProLangParser.STR, 0); }
+		public TerminalNode CHAR() { return getToken(ProLangParser.CHAR, 0); }
+		public TerminalNode HEX() { return getToken(ProLangParser.HEX, 0); }
+		public TerminalNode BITS() { return getToken(ProLangParser.BITS, 0); }
+		public TerminalNode DEC() { return getToken(ProLangParser.DEC, 0); }
 		public LitContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_lit; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterLit(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterLit(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitLit(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitLit(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitLit(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -255,7 +268,7 @@ public class Task1Parser extends Parser {
 	}
 
 	public static class SourceContext extends ParserRuleContext {
-		public TerminalNode EOF() { return getToken(Task1Parser.EOF, 0); }
+		public TerminalNode EOF() { return getToken(ProLangParser.EOF, 0); }
 		public List<SourceItemContext> sourceItem() {
 			return getRuleContexts(SourceItemContext.class);
 		}
@@ -268,11 +281,16 @@ public class Task1Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_source; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterSource(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterSource(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitSource(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitSource(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitSource(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -322,11 +340,16 @@ public class Task1Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_sourceItem; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterSourceItem(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterSourceItem(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitSourceItem(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitSourceItem(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitSourceItem(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -367,11 +390,16 @@ public class Task1Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_funcDef; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterFuncDef(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterFuncDef(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitFuncDef(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitFuncDef(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitFuncDef(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -418,7 +446,7 @@ public class Task1Parser extends Parser {
 	}
 
 	public static class FuncSignatureContext extends ParserRuleContext {
-		public TerminalNode IDENTIFIER() { return getToken(Task1Parser.IDENTIFIER, 0); }
+		public TerminalNode IDENTIFIER() { return getToken(ProLangParser.IDENTIFIER, 0); }
 		public List<ArgDefContext> argDef() {
 			return getRuleContexts(ArgDefContext.class);
 		}
@@ -434,11 +462,16 @@ public class Task1Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_funcSignature; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterFuncSignature(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterFuncSignature(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitFuncSignature(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitFuncSignature(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitFuncSignature(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -524,11 +557,16 @@ public class Task1Parser extends Parser {
 		public ArrayContext(TypeRefContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterArray(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterArray(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitArray(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitArray(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitArray(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class BuiltinContext extends TypeRefContext {
@@ -538,23 +576,33 @@ public class Task1Parser extends Parser {
 		public BuiltinContext(TypeRefContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterBuiltin(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterBuiltin(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitBuiltin(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitBuiltin(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitBuiltin(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class CustomContext extends TypeRefContext {
-		public TerminalNode IDENTIFIER() { return getToken(Task1Parser.IDENTIFIER, 0); }
+		public TerminalNode IDENTIFIER() { return getToken(ProLangParser.IDENTIFIER, 0); }
 		public CustomContext(TypeRefContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterCustom(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterCustom(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitCustom(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitCustom(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitCustom(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -673,18 +721,23 @@ public class Task1Parser extends Parser {
 		public TypeRefContext typeRef() {
 			return getRuleContext(TypeRefContext.class,0);
 		}
-		public List<TerminalNode> IDENTIFIER() { return getTokens(Task1Parser.IDENTIFIER); }
+		public List<TerminalNode> IDENTIFIER() { return getTokens(ProLangParser.IDENTIFIER); }
 		public TerminalNode IDENTIFIER(int i) {
-			return getToken(Task1Parser.IDENTIFIER, i);
+			return getToken(ProLangParser.IDENTIFIER, i);
 		}
 		public StatementVarContext(StatementContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterStatementVar(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterStatementVar(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitStatementVar(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitStatementVar(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitStatementVar(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class StatementDoContext extends StatementContext {
@@ -700,22 +753,32 @@ public class Task1Parser extends Parser {
 		public StatementDoContext(StatementContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterStatementDo(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterStatementDo(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitStatementDo(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitStatementDo(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitStatementDo(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class StatementBreakContext extends StatementContext {
 		public StatementBreakContext(StatementContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterStatementBreak(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterStatementBreak(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitStatementBreak(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitStatementBreak(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitStatementBreak(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class ExpContext extends StatementContext {
@@ -725,11 +788,16 @@ public class Task1Parser extends Parser {
 		public ExpContext(StatementContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterExp(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterExp(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitExp(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitExp(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitExp(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class StatementWhileContext extends StatementContext {
@@ -745,11 +813,16 @@ public class Task1Parser extends Parser {
 		public StatementWhileContext(StatementContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterStatementWhile(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterStatementWhile(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitStatementWhile(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitStatementWhile(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitStatementWhile(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class StatementIfContext extends StatementContext {
@@ -765,11 +838,16 @@ public class Task1Parser extends Parser {
 		public StatementIfContext(StatementContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterStatementIf(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterStatementIf(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitStatementIf(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitStatementIf(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitStatementIf(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -994,42 +1072,57 @@ public class Task1Parser extends Parser {
 		public ExprContext expr(int i) {
 			return getRuleContext(ExprContext.class,i);
 		}
-		public TerminalNode BINOP() { return getToken(Task1Parser.BINOP, 0); }
+		public TerminalNode BINOP() { return getToken(ProLangParser.BINOP, 0); }
 		public BinaryContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterBinary(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterBinary(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitBinary(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitBinary(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitBinary(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class UnariContext extends ExprContext {
-		public TerminalNode UNOP() { return getToken(Task1Parser.UNOP, 0); }
+		public TerminalNode UNOP() { return getToken(ProLangParser.UNOP, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
 		public UnariContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterUnari(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterUnari(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitUnari(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitUnari(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitUnari(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class PlaceContext extends ExprContext {
-		public TerminalNode IDENTIFIER() { return getToken(Task1Parser.IDENTIFIER, 0); }
+		public TerminalNode IDENTIFIER() { return getToken(ProLangParser.IDENTIFIER, 0); }
 		public PlaceContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterPlace(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterPlace(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitPlace(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitPlace(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitPlace(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class CallOrIndexerContext extends ExprContext {
@@ -1042,11 +1135,16 @@ public class Task1Parser extends Parser {
 		public CallOrIndexerContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterCallOrIndexer(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterCallOrIndexer(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitCallOrIndexer(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitCallOrIndexer(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitCallOrIndexer(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class BracesContext extends ExprContext {
@@ -1056,11 +1154,16 @@ public class Task1Parser extends Parser {
 		public BracesContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterBraces(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterBraces(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitBraces(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitBraces(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitBraces(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class LiteralContext extends ExprContext {
@@ -1070,11 +1173,16 @@ public class Task1Parser extends Parser {
 		public LiteralContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).enterLiteral(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).enterLiteral(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Task1Listener ) ((Task1Listener)listener).exitLiteral(this);
+			if ( listener instanceof ProLangListener ) ((ProLangListener)listener).exitLiteral(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ProLangVisitor ) return ((ProLangVisitor<? extends T>)visitor).visitLiteral(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 

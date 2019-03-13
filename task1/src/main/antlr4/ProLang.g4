@@ -1,4 +1,4 @@
-grammar Task1;
+grammar ProLang;
 
 @header {
 package tk.dadle8.antlr4;
