@@ -23,10 +23,12 @@ public class Task1 {
         ProLangParser parser = new ProLangParser(tokens);
         ParseTree tree = parser.source();
         ParseTreeWalker walker = new ParseTreeWalker();
-        walker.walk(new SpecificListener(), tree);
+        SpecificListener listener = new SpecificListener(parser);
+        ParseTreeWalker.DEFAULT.walk(listener, tree);
+        System.out.println(listener.toString());
 
-        System.out.println(TreeUtils.toPrettyTree(tree, List.of(parser.getRuleNames())));
+//        System.out.println(TreeUtils.toPrettyTree(tree, List.of(parser.getRuleNames())));
 
-        System.out.println(Trees.toStringTree(tree, parser));
+//        System.out.println(Trees.toStringTree(tree, parser));
     }
 }
