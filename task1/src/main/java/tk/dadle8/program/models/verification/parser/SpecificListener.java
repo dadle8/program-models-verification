@@ -15,9 +15,9 @@ import java.util.List;
 
 public class SpecificListener extends ProLangBaseListener {
 
-    /** Platform dependent end-of-line marker */
+    /* Platform dependent end-of-line marker */
     public static final String Eol = System.lineSeparator();
-    /** The literal indent char(s) used for pretty-printing */
+    /* The literal indent char(s) used for pretty-printing */
     public static final String Indents = "-";
     private static int level;
 
@@ -26,7 +26,7 @@ public class SpecificListener extends ProLangBaseListener {
         if (level > 0) {
             sb.append(Eol);
             for (int cnt = 0; cnt < level - 1; cnt++) {
-                sb.append(' ');
+                sb.append("  ");
             }
         }
         return sb.toString();

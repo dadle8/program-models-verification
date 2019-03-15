@@ -1,0 +1,5 @@
+function test(first, second)
+    if a > b then
+        a = c;
+    end if
+end function
