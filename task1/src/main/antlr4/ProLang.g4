@@ -13,7 +13,7 @@ IDENTIFIER : [a-zA-Z_]([a-zA-Z_0-9])*;
 STR : '"' (~('\\'|'"'))* '"' ;
 argDef : IDENTIFIER ('as' typeRef)?;
 built: 'bool'|'byte'|'int'|'uint'|'long'|'ulong'|'char'|'string';
-BINOP : '>' | '<' | '=';
+BINOP : '>' | '<' | '=' | '+' | '-';
 UNOP : '!';
 lit : BOOL|STR|CHAR|HEX|BITS|DEC;
 WS : [ \t\r\n]+ -> skip;

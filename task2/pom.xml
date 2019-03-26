@@ -11,4 +11,12 @@
 
     <artifactId>task2</artifactId>
     <name>Task2</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>guru.nidi</groupId>
+            <artifactId>graphviz-java</artifactId>
+            <version>0.8.3</version>
+        </dependency>
+    </dependencies>
 </project>
