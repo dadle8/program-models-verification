@@ -1,0 +1,9 @@
+functiontest(first,second)ifa+1>b
+a+1>bthena=c
+a=c;endify=10
+y=10;z=20
+z=20;whilet>10
+t>10t=t-1
+t=t-1;b=b+t
+b=b+t;wenda=a+b-c+t
+a=a+b-c+t;endfunction<EOF>
