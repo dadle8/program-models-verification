@@ -1,0 +1,15 @@
+function test(first, second)
+    if a + 1 > b then
+        a = c;
+    end if
+
+    y = 10;
+    z = 20;
+
+    while t > 10
+        t = t - 1;
+        b = b + t;
+    wend
+
+    a = a + b - c + t;
+end function

@@ -13,7 +13,7 @@ import tk.dadle8.antlr4.ProLangParser;
 import java.util.Arrays;
 import java.util.List;
 
-public class SpecificListener extends ProLangBaseListener {
+public class ConcreteTreeListener extends ProLangBaseListener {
 
     /* Platform dependent end-of-line marker */
     public static final String Eol = System.lineSeparator();
@@ -35,12 +35,12 @@ public class SpecificListener extends ProLangBaseListener {
     private final List<String> ruleNames;
     private final StringBuilder builder = new StringBuilder();
 
-    public SpecificListener(Parser parser) {
+    public ConcreteTreeListener(Parser parser) {
         level = 0;
         this.ruleNames = Arrays.asList(parser.getRuleNames());
     }
 
-    public SpecificListener(List<String> ruleNames) {
+    public ConcreteTreeListener(List<String> ruleNames) {
         this.ruleNames = ruleNames;
     }
 

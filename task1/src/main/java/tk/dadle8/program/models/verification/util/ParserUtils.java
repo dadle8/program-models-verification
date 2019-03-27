@@ -11,8 +11,8 @@ public class ParserUtils {
         return classLoader.getResourceAsStream("text.txt");
     }
 
-    public void writeFile(String text) {
-        try(FileWriter writer = new FileWriter("task1/out/result.txt", false))
+    public void writeFile(String text, String pathToFile) {
+        try(FileWriter writer = new FileWriter(pathToFile, false))
         {
             writer.write(text);
             writer.flush();

@@ -1,4 +1,4 @@
-package tk.dadle8.program.models.verification.graph;
+package tk.dadle8.program.models.verification.graph.util;
 
 import guru.nidi.graphviz.attribute.Label;
 import guru.nidi.graphviz.attribute.RankDir;

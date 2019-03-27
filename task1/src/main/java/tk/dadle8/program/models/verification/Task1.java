@@ -6,7 +6,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import tk.dadle8.antlr4.ProLangLexer;
 import tk.dadle8.antlr4.ProLangParser;
-import tk.dadle8.program.models.verification.parser.SpecificListener;
+import tk.dadle8.program.models.verification.parser.ConcreteTreeListener;
 import tk.dadle8.program.models.verification.util.ParserUtils;
 
 import java.io.IOException;
@@ -21,8 +21,8 @@ public class Task1 {
         ProLangParser parser = new ProLangParser(tokens);
         ParseTree tree = parser.source();
 
-        SpecificListener listener = new SpecificListener(parser);
+        ConcreteTreeListener listener = new ConcreteTreeListener(parser);
         ParseTreeWalker.DEFAULT.walk(listener, tree);
-        parserUtils.writeFile(listener.toString());
+        parserUtils.writeFile(listener.toString(), "task1/out/result.txt");
     }
 }
