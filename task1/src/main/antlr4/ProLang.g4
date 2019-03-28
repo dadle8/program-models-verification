@@ -1,7 +1,7 @@
 grammar ProLang;
 
 //@header {
-//package tk.dadle8.antlr4;
+//package tk.dadle8.task1.antlr4;
 //}
 
 CHAR : '[^\']';

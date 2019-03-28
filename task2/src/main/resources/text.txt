@@ -1,4 +1,6 @@
 function test(first, second)
+    b = 2;
+
     if a + 1 > b then
         a = c;
     end if

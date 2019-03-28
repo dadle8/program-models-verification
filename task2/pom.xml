@@ -14,12 +14,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>guru.nidi</groupId>
-            <artifactId>graphviz-java</artifactId>
-            <version>0.8.3</version>
-        </dependency>
-
-        <dependency>
             <groupId>tk.dadle8.program-models-verification</groupId>
             <artifactId>task1</artifactId>
             <version>1.0-SNAPSHOT</version>

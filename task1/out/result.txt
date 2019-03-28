@@ -13,102 +13,111 @@ source
           second [line 1, offset 21:26])
         ) [line 1, offset 9:12])
       statement
+        expr BinaryContext
+          expr
+            b [line 2, offset 34:34])
+          =
+          expr
+            lit
+              2 [line 2, offset 38:38]) [line 2, offset 38:38]) [line 2, offset 34:34])
+        ; [line 2, offset 34:34])
+      statement
         if
         expr BinaryContext
           expr BinaryContext
             expr
-              a [line 2, offset 37:37])
+              a [line 4, offset 51:51])
             +
             expr
               lit
-                1 [line 2, offset 41:41]) [line 2, offset 41:41]) [line 2, offset 37:37])
+                1 [line 4, offset 55:55]) [line 4, offset 55:55]) [line 4, offset 51:51])
           >
           expr
-            b [line 2, offset 45:45]) [line 2, offset 37:37])
+            b [line 4, offset 59:59]) [line 4, offset 51:51])
         then
         statement
           expr BinaryContext
             expr
-              a [line 3, offset 61:61])
+              a [line 5, offset 75:75])
             =
             expr
-              c [line 3, offset 65:65]) [line 3, offset 61:61])
-          ; [line 3, offset 61:61])
+              c [line 5, offset 79:79]) [line 5, offset 75:75])
+          ; [line 5, offset 75:75])
         end
-        if [line 2, offset 34:35])
+        if [line 4, offset 48:49])
       statement
         expr BinaryContext
           expr
-            y [line 6, offset 87:87])
+            y [line 8, offset 101:101])
           =
           expr
             lit
-              10 [line 6, offset 91:92]) [line 6, offset 91:92]) [line 6, offset 87:87])
-        ; [line 6, offset 87:87])
+              10 [line 8, offset 105:106]) [line 8, offset 105:106]) [line 8, offset 101:101])
+        ; [line 8, offset 101:101])
       statement
         expr BinaryContext
           expr
-            z [line 7, offset 100:100])
+            z [line 9, offset 114:114])
           =
           expr
             lit
-              20 [line 7, offset 104:105]) [line 7, offset 104:105]) [line 7, offset 100:100])
-        ; [line 7, offset 100:100])
+              20 [line 9, offset 118:119]) [line 9, offset 118:119]) [line 9, offset 114:114])
+        ; [line 9, offset 114:114])
       statement
         while
         expr BinaryContext
           expr
-            t [line 9, offset 121:121])
+            t [line 11, offset 135:135])
           >
           expr
             lit
-              10 [line 9, offset 125:126]) [line 9, offset 125:126]) [line 9, offset 121:121])
+              10 [line 11, offset 139:140]) [line 11, offset 139:140]) [line 11, offset 135:135])
         statement
           expr BinaryContext
             expr BinaryContext
               expr
-                t [line 10, offset 137:137])
+                t [line 12, offset 151:151])
               =
               expr
-                t [line 10, offset 141:141]) [line 10, offset 137:137])
+                t [line 12, offset 155:155]) [line 12, offset 151:151])
             -
             expr
               lit
-                1 [line 10, offset 145:145]) [line 10, offset 145:145]) [line 10, offset 137:137])
-          ; [line 10, offset 137:137])
+                1 [line 12, offset 159:159]) [line 12, offset 159:159]) [line 12, offset 151:151])
+          ; [line 12, offset 151:151])
         statement
           expr BinaryContext
             expr BinaryContext
               expr
-                b [line 11, offset 157:157])
+                b [line 13, offset 171:171])
               =
               expr
-                b [line 11, offset 161:161]) [line 11, offset 157:157])
+                b [line 13, offset 175:175]) [line 13, offset 171:171])
             +
             expr
-              t [line 11, offset 165:165]) [line 11, offset 157:157])
-          ; [line 11, offset 157:157])
-        wend [line 9, offset 115:119])
+              t [line 13, offset 179:179]) [line 13, offset 171:171])
+          ; [line 13, offset 171:171])
+        wend [line 11, offset 129:133])
       statement
         expr BinaryContext
           expr BinaryContext
             expr BinaryContext
               expr BinaryContext
                 expr
-                  a [line 14, offset 185:185])
+                  a [line 16, offset 199:199])
                 =
                 expr
-                  a [line 14, offset 189:189]) [line 14, offset 185:185])
+                  a [line 16, offset 203:203]) [line 16, offset 199:199])
               +
               expr
-                b [line 14, offset 193:193]) [line 14, offset 185:185])
+                b [line 16, offset 207:207]) [line 16, offset 199:199])
             -
             expr
-              c [line 14, offset 197:197]) [line 14, offset 185:185])
+              c [line 16, offset 211:211]) [line 16, offset 199:199])
           +
           expr
-            t [line 14, offset 201:201]) [line 14, offset 185:185])
-        ; [line 14, offset 185:185])
+            t [line 16, offset 215:215]) [line 16, offset 199:199])
+        ; [line 16, offset 199:199])
       end
       function [line 1, offset 0:7]) [line 1, offset 0:7])
   <EOF> [line 1, offset 0:7])

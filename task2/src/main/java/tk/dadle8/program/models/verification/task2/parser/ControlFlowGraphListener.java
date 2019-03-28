@@ -1,4 +1,4 @@
-package tk.dadle8.program.models.verification.parser;
+package tk.dadle8.program.models.verification.task2.parser;
 
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -6,8 +6,8 @@ import org.antlr.v4.runtime.misc.Utils;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.antlr.v4.runtime.tree.Trees;
-import tk.dadle8.antlr4.ProLangBaseListener;
-import tk.dadle8.antlr4.ProLangParser;
+import tk.dadle8.program.models.verification.task1.antlr4.ProLangBaseListener;
+import tk.dadle8.program.models.verification.task1.antlr4.ProLangParser;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +21,7 @@ public class ControlFlowGraphListener extends ProLangBaseListener {
     private final StringBuilder builder = new StringBuilder();
 
     public ControlFlowGraphListener(Parser parser) {
-        this.ruleNames = Arrays.asList("statement");
+        this.ruleNames = Arrays.asList(parser.getRuleNames());
     }
 
     public ControlFlowGraphListener(List<String> ruleNames) {

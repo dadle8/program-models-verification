@@ -1,4 +1,4 @@
-package tk.dadle8.program.models.verification.util;
+package tk.dadle8.program.models.verification.task1.util;
 
 import java.util.List;
 
