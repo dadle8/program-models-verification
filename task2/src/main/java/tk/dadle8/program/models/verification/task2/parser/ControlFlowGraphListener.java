@@ -1,79 +1,93 @@
 package tk.dadle8.program.models.verification.task2.parser;
 
-import org.antlr.v4.runtime.Parser;
-import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.misc.Utils;
-import org.antlr.v4.runtime.tree.ErrorNode;
-import org.antlr.v4.runtime.tree.TerminalNode;
-import org.antlr.v4.runtime.tree.Trees;
 import tk.dadle8.program.models.verification.task1.antlr4.ProLangBaseListener;
 import tk.dadle8.program.models.verification.task1.antlr4.ProLangParser;
+import tk.dadle8.program.models.verification.task2.model.ControlFlowBlock;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ControlFlowGraphListener extends ProLangBaseListener {
 
-    /* Platform dependent end-of-line marker */
-    private static final String Eol = System.lineSeparator();
+    private Map<Integer, ControlFlowBlock> blockList = new LinkedHashMap<>();
+    private int currentBlockId = 1;
+    private int blockId = 1;
+    private int currentBranchId = 1;
 
-    private final List<String> ruleNames;
-    private final StringBuilder builder = new StringBuilder();
-
-    public ControlFlowGraphListener(Parser parser) {
-        this.ruleNames = Arrays.asList(parser.getRuleNames());
-    }
-
-    public ControlFlowGraphListener(List<String> ruleNames) {
-        this.ruleNames = ruleNames;
+    public ControlFlowGraphListener() {
+        blockList.put(currentBlockId, new ControlFlowBlock(currentBlockId, new ArrayList<>(), currentBranchId, new ArrayList<>()));
     }
 
     @Override
-    public void visitTerminal(TerminalNode node) {
-        builder.append(Utils.escapeWhitespace(Trees.getNodeText(node, ruleNames), false));
-    }
-
-    @Override
-    public void enterExp(ProLangParser.ExpContext ctx) {
-//        builder.append(ctx.getText());
-    }
-
-    @Override
-    public void exitExp(ProLangParser.ExpContext ctx) {
-//        builder.append(Eol);
+    public void enterStatementExp(ProLangParser.StatementExpContext ctx) {
+        if (ctx.getParent() instanceof ProLangParser.IfStatementContext
+                || ctx.getParent() instanceof ProLangParser.ElseStatementContext
+                || ctx.getParent() instanceof ProLangParser.StatementWhileContext) {
+            return;
+        }
+        blockList.get(currentBlockId).getText().add(ctx.getText());
     }
 
     @Override
     public void enterStatementIf(ProLangParser.StatementIfContext ctx) {
+        currentBlockId++;
+        currentBranchId++;
+        var ifBlock = new ControlFlowBlock(currentBlockId, new ArrayList<>(), currentBranchId, ctx.ifStatement().statement().stream().map(s -> s.getText()).collect(Collectors.toList()));
+        blockList.get(currentBlockId - 1).getNext().add(ifBlock);
+        blockList.get(currentBlockId - 1).getText().add(ctx.ifexpr().getText() + " condition");
+        blockList.put(currentBlockId, ifBlock);
 
+        currentBlockId++;
+        currentBranchId++;
+        var elseBlock = new ControlFlowBlock(currentBlockId, new ArrayList<>(), currentBranchId, ctx.elseStatement().statement().stream().map(s -> s.getText()).collect(Collectors.toList()));
+        blockList.get(currentBlockId - 2).getNext().add(elseBlock);
+        blockList.put(currentBlockId, elseBlock);
     }
 
+    @Override
+    public void exitStatementIf(ProLangParser.StatementIfContext ctx) {
+        currentBlockId++;
+        currentBranchId++;
+        var newBlock = new ControlFlowBlock(currentBlockId, new ArrayList<>(), currentBranchId, new ArrayList<>());
+        blockList.get(currentBlockId - 1).getNext().add(newBlock);
+        blockList.get(currentBlockId - 2).getNext().add(newBlock);
+        blockList.put(currentBlockId, newBlock);
+    }
 
     @Override
-    public void visitErrorNode(ErrorNode node) {
-        if (builder.length() > 0) {
-            builder.append(' ');
+    public void enterStatementWhile(ProLangParser.StatementWhileContext ctx) {
+        currentBlockId++;
+        currentBranchId++;
+        var whileBlock = new ControlFlowBlock(currentBlockId, new ArrayList<>(), currentBranchId,
+                ctx.statement().stream().filter(s -> !(s instanceof ProLangParser.StatementWhileContext
+                        || s instanceof ProLangParser.StatementIfContext)).map(s -> s.getText()).collect(Collectors.toList()));
+        blockList.get(currentBlockId - 1).getNext().add(whileBlock);
+        blockList.get(currentBlockId - 1).getText().add(ctx.expr().getText() + " condition");
+        blockList.put(currentBlockId, whileBlock);
+    }
+
+    @Override
+    public void exitStatementWhile(ProLangParser.StatementWhileContext ctx) {
+        if (!(ctx.getParent() instanceof ProLangParser.StatementWhileContext)) {
+            currentBlockId++;
+            currentBranchId++;
+            var newBlock = new ControlFlowBlock(currentBranchId, new ArrayList<>(), currentBranchId, new ArrayList<>());
+            blockList.get(currentBlockId - 2).getNext().add(newBlock);
+            blockList.put(currentBlockId, newBlock);
+        } else {
+            blockList.get(currentBlockId).getNext().add(blockList.get(currentBlockId - 1));
         }
-
-        builder.append(Utils.escapeWhitespace(Trees.getNodeText(node, ruleNames), false));
-    }
-
-    @Override
-    public void enterEveryRule(ParserRuleContext ctx) {
-        if (ctx instanceof ProLangParser.ExprContext && !(ctx.getParent() instanceof ProLangParser.ExprContext)) {
-            builder.append(ctx.getText());
-            builder.append(Eol);
-        }
-    }
-
-    @Override
-    public void exitEveryRule(ParserRuleContext ctx) {
-//        builder.append(Eol);
     }
 
     @Override
     public String toString() {
-        return builder.toString();
+        return String.join("\n\n", blockList.values().stream().map(block -> block.toString()).collect(Collectors.toList()));
+    }
+
+    private int getCurrentBlockId() {
+        return blockId++;
     }
 }
 

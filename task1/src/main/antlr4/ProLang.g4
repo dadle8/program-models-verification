@@ -1,8 +1,8 @@
 grammar ProLang;
 
-//@header {
-//package tk.dadle8.task1.antlr4;
-//}
+@header {
+package tk.dadle8.program.models.verification.task1.antlr4;
+}
 
 CHAR : '[^\']';
 HEX : '0'[xX][0-9A-Fa-f]+;
@@ -38,11 +38,22 @@ typeRef
 
 statement
     : 'dim' (IDENTIFIER (',' IDENTIFIER)*)? 'as' typeRef #statementVar
-    | 'if' expr 'then' statement* ('else' statement*)? 'end' 'if' #statementIf
+    | 'if' ifexpr ifStatement (elseStatement)? 'end' 'if' #statementIf
     | 'while' expr statement* 'wend' #statementWhile
     | 'do' statement* 'loop' ('while'|'until') expr #statementDo
     | 'break' #statementBreak
-    | expr ';' #exp
+    | expr ';' #statementExp
+    ;
+
+ifexpr
+    : expr
+    ;
+ifStatement
+    : 'then' statement*
+    ;
+
+elseStatement
+    : 'else' statement*
     ;
 
 expr

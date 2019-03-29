@@ -3,6 +3,8 @@ function test(first, second)
 
     if a + 1 > b then
         a = c;
+        else
+            a = b;
     end if
 
     y = 10;
@@ -11,6 +13,9 @@ function test(first, second)
     while t > 10
         t = t - 1;
         b = b + t;
+        while x > 5
+            r = 10;
+        wend
     wend
 
     a = a + b - c + t;

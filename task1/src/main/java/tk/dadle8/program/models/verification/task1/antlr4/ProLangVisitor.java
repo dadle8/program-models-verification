@@ -109,12 +109,30 @@ public interface ProLangVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStatementBreak(ProLangParser.StatementBreakContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code exp}
+	 * Visit a parse tree produced by the {@code statementExp}
 	 * labeled alternative in {@link ProLangParser#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExp(ProLangParser.ExpContext ctx);
+	T visitStatementExp(ProLangParser.StatementExpContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ProLangParser#ifexpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIfexpr(ProLangParser.IfexprContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ProLangParser#ifStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIfStatement(ProLangParser.IfStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ProLangParser#elseStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitElseStatement(ProLangParser.ElseStatementContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code binary}
 	 * labeled alternative in {@link ProLangParser#expr}.

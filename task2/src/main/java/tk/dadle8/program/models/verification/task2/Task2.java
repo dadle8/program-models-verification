@@ -23,7 +23,7 @@ public class Task2 {
         ProLangParser parser = new ProLangParser(tokens);
         ParseTree tree = parser.source();
 
-        ControlFlowGraphListener listener = new ControlFlowGraphListener(parser);
+        ControlFlowGraphListener listener = new ControlFlowGraphListener();
         ParseTreeWalker.DEFAULT.walk(listener, tree);
         parserUtils.writeFile(listener.toString(), "task2/out/result.txt");
     }

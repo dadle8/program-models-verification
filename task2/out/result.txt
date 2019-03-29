@@ -1,10 +1,39 @@
-functiontest(first,second)b=2
-b=2;ifa+1>b
-a+1>bthena=c
-a=c;endify=10
-y=10;z=20
-z=20;whilet>10
-t>10t=t-1
-t=t-1;b=b+t
-b=b+t;wenda=a+b-c+t
-a=a+b-c+t;endfunction<EOF>
+id# 1
+b=2;
+a+1>b condition
+next# 2 3
+branch# 1
+
+id# 2
+a=c;
+next# 4
+branch# 2
+
+id# 3
+a=b;
+next# 4
+branch# 3
+
+id# 4
+y=10;
+z=20;
+t>10 condition
+next# 5
+branch# 4
+
+id# 5
+t=t-1;
+b=b+t;
+x>5 condition
+next# 6 7
+branch# 5
+
+id# 6
+r=10;
+next# 5
+branch# 6
+
+id# 7
+a=a+b-c+t;
+next# 
+branch# 7
