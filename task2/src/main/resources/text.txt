@@ -3,8 +3,13 @@ function test(first, second)
 
     if a + 1 > b then
         a = c;
+        if c > 2 then
+            c = a;
         else
-            a = b;
+            c = b;
+        end if
+    else
+        a = b;
     end if
 
     y = 10;

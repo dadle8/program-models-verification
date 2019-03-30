@@ -6,12 +6,14 @@ import tk.dadle8.program.models.verification.task2.model.ControlFlowBlock;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ControlFlowGraphListener extends ProLangBaseListener {
 
     private Map<Integer, ControlFlowBlock> blockList = new LinkedHashMap<>();
+    private List<ControlFlowBlock> withoutNextBlockList = new ArrayList<>();
     private int currentBlockId = 1;
     private int blockId = 1;
     private int currentBranchId = 1;
