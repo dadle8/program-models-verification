@@ -4,83 +4,75 @@ import tk.dadle8.program.models.verification.task1.antlr4.ProLangBaseListener;
 import tk.dadle8.program.models.verification.task1.antlr4.ProLangParser;
 import tk.dadle8.program.models.verification.task2.model.ControlFlowBlock;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ControlFlowGraphListener extends ProLangBaseListener {
 
     private Map<Integer, ControlFlowBlock> blockList = new LinkedHashMap<>();
-    private List<ControlFlowBlock> withoutNextBlockList = new ArrayList<>();
-    private int currentBlockId = 1;
-    private int blockId = 1;
-    private int currentBranchId = 1;
+    private Map<Integer, ControlFlowBlock> withoutNextBlockList = new HashMap<>();
+
+    private ControlFlowBlock currentFlowBlock;
+    private int blockId = 0;
+
+    private int ifLevel = 0;
+    private int whileLevel = 0;
+
+    private Map<Integer, List<ControlFlowBlock>> ifBlocks = new HashMap<>();
+    private Map<Integer, ControlFlowBlock> whileBlocks = new HashMap<>();
 
     public ControlFlowGraphListener() {
-        blockList.put(currentBlockId, new ControlFlowBlock(currentBlockId, new ArrayList<>(), currentBranchId, new ArrayList<>()));
     }
 
     @Override
     public void enterStatementExp(ProLangParser.StatementExpContext ctx) {
-        if (ctx.getParent() instanceof ProLangParser.IfStatementContext
-                || ctx.getParent() instanceof ProLangParser.ElseStatementContext
-                || ctx.getParent() instanceof ProLangParser.StatementWhileContext) {
+        if (ctx.getParent() instanceof ProLangParser.IfStatementContext) {
+            ifBlocks.get(ifLevel).get(0).getText().add(ctx.getText());
             return;
         }
-        blockList.get(currentBlockId).getText().add(ctx.getText());
+        if (ctx.getParent() instanceof ProLangParser.ElseStatementContext) {
+            ifBlocks.get(ifLevel).get(1).getText().add(ctx.getText());
+            return;
+        }
+        if (ctx.getParent() instanceof ProLangParser.StatementWhileContext) {
+            whileBlocks.get(whileLevel).getText().add(ctx.getText());
+            return;
+        }
+        getCFBlock().getText().add(ctx.getText());
+
     }
 
     @Override
     public void enterStatementIf(ProLangParser.StatementIfContext ctx) {
-        currentBlockId++;
-        currentBranchId++;
-        var ifBlock = new ControlFlowBlock(currentBlockId, new ArrayList<>(), currentBranchId, ctx.ifStatement().statement().stream().map(s -> s.getText()).collect(Collectors.toList()));
-        blockList.get(currentBlockId - 1).getNext().add(ifBlock);
-        blockList.get(currentBlockId - 1).getText().add(ctx.ifexpr().getText() + " condition");
-        blockList.put(currentBlockId, ifBlock);
+        var conditionBlock = createCFBlock(Collections.singletonList(ctx.ifexpr().getText()));
+        currentFlowBlock = null;
 
-        currentBlockId++;
-        currentBranchId++;
-        var elseBlock = new ControlFlowBlock(currentBlockId, new ArrayList<>(), currentBranchId, ctx.elseStatement().statement().stream().map(s -> s.getText()).collect(Collectors.toList()));
-        blockList.get(currentBlockId - 2).getNext().add(elseBlock);
-        blockList.put(currentBlockId, elseBlock);
+        var ifBlock = createCFBlock(new ArrayList<>());
+        var elseBlock = ctx.elseStatement() == null ? new ControlFlowBlock() : createCFBlock(new ArrayList<>());
+        ifLevel++;
+        ifBlocks.put(ifLevel, List.of(ifBlock, elseBlock));
     }
 
     @Override
     public void exitStatementIf(ProLangParser.StatementIfContext ctx) {
-        currentBlockId++;
-        currentBranchId++;
-        var newBlock = new ControlFlowBlock(currentBlockId, new ArrayList<>(), currentBranchId, new ArrayList<>());
-        blockList.get(currentBlockId - 1).getNext().add(newBlock);
-        blockList.get(currentBlockId - 2).getNext().add(newBlock);
-        blockList.put(currentBlockId, newBlock);
+        currentFlowBlock = null;
+        ifLevel--;
     }
 
     @Override
     public void enterStatementWhile(ProLangParser.StatementWhileContext ctx) {
-        currentBlockId++;
-        currentBranchId++;
-        var whileBlock = new ControlFlowBlock(currentBlockId, new ArrayList<>(), currentBranchId,
-                ctx.statement().stream().filter(s -> !(s instanceof ProLangParser.StatementWhileContext
-                        || s instanceof ProLangParser.StatementIfContext)).map(s -> s.getText()).collect(Collectors.toList()));
-        blockList.get(currentBlockId - 1).getNext().add(whileBlock);
-        blockList.get(currentBlockId - 1).getText().add(ctx.expr().getText() + " condition");
-        blockList.put(currentBlockId, whileBlock);
+        var conditionBlock = createCFBlock(Collections.singletonList(ctx.expr().getText()));
+        currentFlowBlock = null;
+
+        var bodyWhile = createCFBlock(new ArrayList<>());
+        whileLevel++;
+        whileBlocks.put(whileLevel, bodyWhile);
     }
 
     @Override
     public void exitStatementWhile(ProLangParser.StatementWhileContext ctx) {
-        if (!(ctx.getParent() instanceof ProLangParser.StatementWhileContext)) {
-            currentBlockId++;
-            currentBranchId++;
-            var newBlock = new ControlFlowBlock(currentBranchId, new ArrayList<>(), currentBranchId, new ArrayList<>());
-            blockList.get(currentBlockId - 2).getNext().add(newBlock);
-            blockList.put(currentBlockId, newBlock);
-        } else {
-            blockList.get(currentBlockId).getNext().add(blockList.get(currentBlockId - 1));
-        }
+        currentFlowBlock = null;
+        whileLevel--;
     }
 
     @Override
@@ -88,8 +80,22 @@ public class ControlFlowGraphListener extends ProLangBaseListener {
         return String.join("\n\n", blockList.values().stream().map(block -> block.toString()).collect(Collectors.toList()));
     }
 
-    private int getCurrentBlockId() {
+    private int getNextBlockId() {
         return blockId++;
+    }
+
+    private ControlFlowBlock createCFBlock(List<String> text) {
+        var newBlock = new ControlFlowBlock(getNextBlockId(), new ArrayList<>(), 0, text);
+        blockList.put(newBlock.getId(), newBlock);
+
+        return newBlock;
+    }
+
+    private ControlFlowBlock getCFBlock() {
+        if (currentFlowBlock == null) {
+            currentFlowBlock = createCFBlock(new ArrayList<>());
+        }
+        return currentFlowBlock;
     }
 }
 

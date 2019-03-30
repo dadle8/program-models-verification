@@ -1,39 +1,66 @@
-id# 1
+id# 0
 b=2;
-a+1>b condition
-next# 2 3
-branch# 1
+next# 
+branch# 0
+
+id# 1
+a+1>b
+next# 
+branch# 0
 
 id# 2
 a=c;
-next# 4
-branch# 2
+next# 
+branch# 0
 
 id# 3
 a=b;
-next# 4
-branch# 3
+next# 
+branch# 0
 
 id# 4
-y=10;
-z=20;
-t>10 condition
-next# 5
-branch# 4
+c>2
+next# 
+branch# 0
 
 id# 5
-t=t-1;
-b=b+t;
-x>5 condition
-next# 6 7
-branch# 5
+c=a;
+next# 
+branch# 0
 
 id# 6
-r=10;
-next# 5
-branch# 6
+c=b;
+next# 
+branch# 0
 
 id# 7
+y=10;
+z=20;
+next# 
+branch# 0
+
+id# 8
+t>10
+next# 
+branch# 0
+
+id# 9
+t=t-1;
+b=b+t;
+next# 
+branch# 0
+
+id# 10
+x>5
+next# 
+branch# 0
+
+id# 11
+r=10;
+next# 
+branch# 0
+
+id# 12
 a=a+b-c+t;
 next# 
-branch# 7
+branch# 0
