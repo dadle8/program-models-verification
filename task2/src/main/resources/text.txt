@@ -8,6 +8,7 @@ function test(first, second)
         else
             c = b;
         end if
+        b = c;
     else
         a = b;
     end if
@@ -21,6 +22,7 @@ function test(first, second)
         while x > 5
             r = 10;
         wend
+        c = t;
     wend
 
     a = a + b - c + t;

@@ -38,22 +38,39 @@ typeRef
 
 statement
     : 'dim' (IDENTIFIER (',' IDENTIFIER)*)? 'as' typeRef #statementVar
-    | 'if' ifexpr ifStatement (elseStatement)? 'end' 'if' #statementIf
-    | 'while' expr statement* 'wend' #statementWhile
-    | 'do' statement* 'loop' ('while'|'until') expr #statementDo
+    | 'if' ifCondition thenStatements (elseStatements)? 'end' 'if' #statementIf
+    | 'while' whileCondition whileStatements 'wend' #statementWhile
+    | 'do' doStatements 'loop' ('while'|'until') doCondition #statementDo
     | 'break' #statementBreak
-    | expr ';' #statementExp
+    | expr ';' #statementExpr
     ;
 
-ifexpr
+ifCondition
     : expr
     ;
-ifStatement
+
+thenStatements
     : 'then' statement*
     ;
 
-elseStatement
+elseStatements
     : 'else' statement*
+    ;
+
+whileCondition
+    : expr
+    ;
+
+whileStatements
+    : statement*
+    ;
+
+doCondition
+    : expr
+    ;
+
+doStatements
+    : statement*
     ;
 
 expr

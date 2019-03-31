@@ -174,47 +174,87 @@ public interface ProLangListener extends ParseTreeListener {
 	 */
 	void exitStatementBreak(ProLangParser.StatementBreakContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code statementExp}
+	 * Enter a parse tree produced by the {@code statementExpr}
 	 * labeled alternative in {@link ProLangParser#statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterStatementExp(ProLangParser.StatementExpContext ctx);
+	void enterStatementExpr(ProLangParser.StatementExprContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code statementExp}
+	 * Exit a parse tree produced by the {@code statementExpr}
 	 * labeled alternative in {@link ProLangParser#statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitStatementExp(ProLangParser.StatementExpContext ctx);
+	void exitStatementExpr(ProLangParser.StatementExprContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ProLangParser#ifexpr}.
+	 * Enter a parse tree produced by {@link ProLangParser#ifCondition}.
 	 * @param ctx the parse tree
 	 */
-	void enterIfexpr(ProLangParser.IfexprContext ctx);
+	void enterIfCondition(ProLangParser.IfConditionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ProLangParser#ifexpr}.
+	 * Exit a parse tree produced by {@link ProLangParser#ifCondition}.
 	 * @param ctx the parse tree
 	 */
-	void exitIfexpr(ProLangParser.IfexprContext ctx);
+	void exitIfCondition(ProLangParser.IfConditionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ProLangParser#ifStatement}.
+	 * Enter a parse tree produced by {@link ProLangParser#thenStatements}.
 	 * @param ctx the parse tree
 	 */
-	void enterIfStatement(ProLangParser.IfStatementContext ctx);
+	void enterThenStatements(ProLangParser.ThenStatementsContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ProLangParser#ifStatement}.
+	 * Exit a parse tree produced by {@link ProLangParser#thenStatements}.
 	 * @param ctx the parse tree
 	 */
-	void exitIfStatement(ProLangParser.IfStatementContext ctx);
+	void exitThenStatements(ProLangParser.ThenStatementsContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ProLangParser#elseStatement}.
+	 * Enter a parse tree produced by {@link ProLangParser#elseStatements}.
 	 * @param ctx the parse tree
 	 */
-	void enterElseStatement(ProLangParser.ElseStatementContext ctx);
+	void enterElseStatements(ProLangParser.ElseStatementsContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ProLangParser#elseStatement}.
+	 * Exit a parse tree produced by {@link ProLangParser#elseStatements}.
 	 * @param ctx the parse tree
 	 */
-	void exitElseStatement(ProLangParser.ElseStatementContext ctx);
+	void exitElseStatements(ProLangParser.ElseStatementsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ProLangParser#whileCondition}.
+	 * @param ctx the parse tree
+	 */
+	void enterWhileCondition(ProLangParser.WhileConditionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ProLangParser#whileCondition}.
+	 * @param ctx the parse tree
+	 */
+	void exitWhileCondition(ProLangParser.WhileConditionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ProLangParser#whileStatements}.
+	 * @param ctx the parse tree
+	 */
+	void enterWhileStatements(ProLangParser.WhileStatementsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ProLangParser#whileStatements}.
+	 * @param ctx the parse tree
+	 */
+	void exitWhileStatements(ProLangParser.WhileStatementsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ProLangParser#doCondition}.
+	 * @param ctx the parse tree
+	 */
+	void enterDoCondition(ProLangParser.DoConditionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ProLangParser#doCondition}.
+	 * @param ctx the parse tree
+	 */
+	void exitDoCondition(ProLangParser.DoConditionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ProLangParser#doStatements}.
+	 * @param ctx the parse tree
+	 */
+	void enterDoStatements(ProLangParser.DoStatementsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ProLangParser#doStatements}.
+	 * @param ctx the parse tree
+	 */
+	void exitDoStatements(ProLangParser.DoStatementsContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code binary}
 	 * labeled alternative in {@link ProLangParser#expr}.

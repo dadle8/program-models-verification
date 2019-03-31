@@ -109,30 +109,54 @@ public interface ProLangVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStatementBreak(ProLangParser.StatementBreakContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code statementExp}
+	 * Visit a parse tree produced by the {@code statementExpr}
 	 * labeled alternative in {@link ProLangParser#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStatementExp(ProLangParser.StatementExpContext ctx);
+	T visitStatementExpr(ProLangParser.StatementExprContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link ProLangParser#ifexpr}.
+	 * Visit a parse tree produced by {@link ProLangParser#ifCondition}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitIfexpr(ProLangParser.IfexprContext ctx);
+	T visitIfCondition(ProLangParser.IfConditionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link ProLangParser#ifStatement}.
+	 * Visit a parse tree produced by {@link ProLangParser#thenStatements}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitIfStatement(ProLangParser.IfStatementContext ctx);
+	T visitThenStatements(ProLangParser.ThenStatementsContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link ProLangParser#elseStatement}.
+	 * Visit a parse tree produced by {@link ProLangParser#elseStatements}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitElseStatement(ProLangParser.ElseStatementContext ctx);
+	T visitElseStatements(ProLangParser.ElseStatementsContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ProLangParser#whileCondition}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWhileCondition(ProLangParser.WhileConditionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ProLangParser#whileStatements}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWhileStatements(ProLangParser.WhileStatementsContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ProLangParser#doCondition}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDoCondition(ProLangParser.DoConditionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ProLangParser#doStatements}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDoStatements(ProLangParser.DoStatementsContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code binary}
 	 * labeled alternative in {@link ProLangParser#expr}.

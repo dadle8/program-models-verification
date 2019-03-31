@@ -7,7 +7,6 @@ import lombok.Setter;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -15,8 +14,8 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class ControlFlowBlock {
     private int id;
-    private List<ControlFlowBlock> next;
-    private int branch;
+    private ControlFlowBlock next;
+    private ControlFlowBlock branch;
     private List<String> text;
 
     @Override
@@ -36,7 +35,15 @@ public class ControlFlowBlock {
     public String toString() {
         return "id# " + id + '\n'
                 + String.join("\n", text) + '\n'
-                + "next# " + next.stream().map(n -> Integer.toString(n.getId())).collect(Collectors.joining(" ")) + '\n'
-                + "branch# " + branch;
+                + "next# " + getNextId() + '\n'
+                + "branch# " + getBranchId();
+    }
+
+    private String getNextId() {
+        return next == null ? "" : Integer.toString(next.getId());
+    }
+
+    private String getBranchId() {
+        return branch == null ? "" : Integer.toString(branch.getId());
     }
 }

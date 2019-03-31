@@ -195,49 +195,97 @@ public class ProLangBaseListener implements ProLangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatementExp(ProLangParser.StatementExpContext ctx) { }
+	@Override public void enterStatementExpr(ProLangParser.StatementExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatementExp(ProLangParser.StatementExpContext ctx) { }
+	@Override public void exitStatementExpr(ProLangParser.StatementExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIfexpr(ProLangParser.IfexprContext ctx) { }
+	@Override public void enterIfCondition(ProLangParser.IfConditionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIfexpr(ProLangParser.IfexprContext ctx) { }
+	@Override public void exitIfCondition(ProLangParser.IfConditionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIfStatement(ProLangParser.IfStatementContext ctx) { }
+	@Override public void enterThenStatements(ProLangParser.ThenStatementsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIfStatement(ProLangParser.IfStatementContext ctx) { }
+	@Override public void exitThenStatements(ProLangParser.ThenStatementsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterElseStatement(ProLangParser.ElseStatementContext ctx) { }
+	@Override public void enterElseStatements(ProLangParser.ElseStatementsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitElseStatement(ProLangParser.ElseStatementContext ctx) { }
+	@Override public void exitElseStatements(ProLangParser.ElseStatementsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterWhileCondition(ProLangParser.WhileConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitWhileCondition(ProLangParser.WhileConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterWhileStatements(ProLangParser.WhileStatementsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitWhileStatements(ProLangParser.WhileStatementsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDoCondition(ProLangParser.DoConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDoCondition(ProLangParser.DoConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDoStatements(ProLangParser.DoStatementsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDoStatements(ProLangParser.DoStatementsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

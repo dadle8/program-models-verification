@@ -1,66 +1,76 @@
 id# 0
 b=2;
-next# 
-branch# 0
+next# 1
+branch# 
 
 id# 1
 a+1>b
-next# 
-branch# 0
+next# 2
+branch# 7
 
 id# 2
 a=c;
-next# 
-branch# 0
+next# 3
+branch# 
 
 id# 3
-a=b;
-next# 
-branch# 0
+c>2
+next# 4
+branch# 5
 
 id# 4
-c>2
-next# 
-branch# 0
+c=a;
+next# 6
+branch# 
 
 id# 5
-c=a;
-next# 
-branch# 0
+c=b;
+next# 6
+branch# 
 
 id# 6
-c=b;
-next# 
-branch# 0
+b=c;
+next# 8
+branch# 
 
 id# 7
-y=10;
-z=20;
-next# 
-branch# 0
+a=b;
+next# 8
+branch# 
 
 id# 8
-t>10
-next# 
-branch# 0
+y=10;
+z=20;
+next# 9
+branch# 
 
 id# 9
-t=t-1;
-b=b+t;
-next# 
-branch# 0
+t>10
+next# 10
+branch# 14
 
 id# 10
-x>5
-next# 
-branch# 0
+t=t-1;
+b=b+t;
+next# 11
+branch# 
 
 id# 11
-r=10;
-next# 
-branch# 0
+x>5
+next# 12
+branch# 13
 
 id# 12
+r=10;
+next# 11
+branch# 
+
+id# 13
+c=t;
+next# 9
+branch# 
+
+id# 14
 a=a+b-c+t;
 next# 
-branch# 0
+branch# 
