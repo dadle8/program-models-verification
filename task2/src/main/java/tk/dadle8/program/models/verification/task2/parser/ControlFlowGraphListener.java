@@ -120,8 +120,13 @@ public class ControlFlowGraphListener extends ProLangBaseListener {
     }
 
     @Override
+    public void exitWhileStatements(ProLangParser.WhileStatementsContext ctx) {
+        whileBlocks.get(whileLevel).put("statements", currentFlowBlock);
+    }
+
+    @Override
     public String toString() {
-        return String.join("\n\n", blockList.values().stream().map(block -> block.toString()).collect(Collectors.toList()));
+        return blockList.values().stream().map(ControlFlowBlock::toString).collect(Collectors.joining("\n\n"));
     }
 
     private int getNextBlockId() {
