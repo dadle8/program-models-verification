@@ -38,10 +38,20 @@ public class ControlFlowGraphListener extends ProLangBaseListener {
     }
 
     @Override
+    public void exitThenStatements(ProLangParser.ThenStatementsContext ctx) {
+        ifBlocks.get(ifLevel).put("then", currentFlowBlock);
+    }
+
+    @Override
     public void enterElseStatements(ProLangParser.ElseStatementsContext ctx) {
         setNewBlockToCurrent(new ArrayList<>());
 
         ifBlocks.get(ifLevel).get("if").setBranch(currentFlowBlock);
+    }
+
+    @Override
+    public void exitElseStatements(ProLangParser.ElseStatementsContext ctx) {
+        ifBlocks.get(ifLevel).put("else", currentFlowBlock);
     }
 
     @Override
