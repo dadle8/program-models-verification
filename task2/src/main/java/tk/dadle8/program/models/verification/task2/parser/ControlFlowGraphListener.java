@@ -71,17 +71,16 @@ public class ControlFlowGraphListener extends ProLangBaseListener {
 
     @Override
     public void exitStatementIf(ProLangParser.StatementIfContext ctx) {
-        var newBlock = createCFBlock(new ArrayList<>());
+        setNewBlockToCurrent(new ArrayList<>());
         var ifElseBlocks = ifContexts.get(ifContextLevel);
 
-        ifElseBlocks.get("then").setNext(newBlock);
+        ifElseBlocks.get("then").setNext(currentCFB);
         if (ifElseBlocks.get("else") == null) {
-            ifElseBlocks.get("if").setNext(newBlock);
+            ifElseBlocks.get("if").setNext(currentCFB);
         } else {
-            ifElseBlocks.get("else").setNext(newBlock);
+            ifElseBlocks.get("else").setNext(currentCFB);
         }
 
-        currentCFB = newBlock;
         ifContextLevel--;
     }
 
@@ -94,16 +93,15 @@ public class ControlFlowGraphListener extends ProLangBaseListener {
 
     @Override
     public void exitStatementWhile(ProLangParser.StatementWhileContext ctx) {
-        var newBlock = createCFBlock(new ArrayList<>());
+        setNewBlockToCurrent(new ArrayList<>());
         var ifWhile = whileContexts.get(whileContextLevel);
         var breaks = breakWhileContexts.get(whileContextLevel);
 
-        ifWhile.get("while").setBranch(newBlock);
+        ifWhile.get("while").setBranch(currentCFB);
         ifWhile.get("statements").setNext(ifWhile.get("while"));
 
-        breaks.forEach(b -> b.setNext(newBlock));
+        breaks.forEach(b -> b.setNext(currentCFB));
 
-        currentCFB = newBlock;
         whileContextLevel--;
     }
 
