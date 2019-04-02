@@ -9,17 +9,19 @@ import java.util.stream.Collectors;
 
 public class ControlFlowGraphListener extends ProLangBaseListener {
 
-    private Map<Integer, ControlFlowBlock> controlFlowBlocks = new LinkedHashMap<>();
+    private Map<Integer, ControlFlowBlock> controlFlowGraph = new LinkedHashMap<>();
 
-    private ControlFlowBlock currentControlFlowBlock;
+    private ControlFlowBlock currentCFB;
     private int blockId = 0;
 
-    private int statementIfContextLevel = 0;
-    private int statementWhileContextLevel = 0;
+    private int ifContextLevel = 0;
+    private int whileContextLevel = 0;
 
-    private Map<Integer, Map<String, ControlFlowBlock>> statementIfContexts = new HashMap<>();
-    private Map<Integer, Map<String, ControlFlowBlock>> statementWhileContexts = new HashMap<>();
-    private Map<Integer, List<ControlFlowBlock>> statementBreakContexts = new HashMap<>();
+    private Map<Integer, Map<String, ControlFlowBlock>> ifContexts = new HashMap<>();
+    private Map<Integer, Map<String, ControlFlowBlock>> whileContexts = new HashMap<>();
+    private Map<Integer, List<ControlFlowBlock>> breakWhileContexts = new HashMap<>();
+    private Map<Integer, Map<String, ControlFlowBlock>> doContexts = new HashMap<>();
+    private Map<Integer, List<ControlFlowBlock>> breakDoContexts = new HashMap<>();
 
     public ControlFlowGraphListener() {
     }
@@ -28,31 +30,31 @@ public class ControlFlowGraphListener extends ProLangBaseListener {
     public void enterIfCondition(ProLangParser.IfConditionContext ctx) {
         setNewBlockToCurrent(Collections.singletonList(ctx.getText()));
 
-        putControlFlowBlockOnIfContext("if", currentControlFlowBlock);
+        putCFBToIfContext("if", currentCFB);
     }
 
     @Override
     public void enterThenStatements(ProLangParser.ThenStatementsContext ctx) {
         setNewBlockToCurrent(new ArrayList<>());
 
-        getControlFlowBlockOnIfContext("if").setNext(currentControlFlowBlock);
+        getCFBFromIfContext().setNext(currentCFB);
     }
 
     @Override
     public void exitThenStatements(ProLangParser.ThenStatementsContext ctx) {
-        putControlFlowBlockOnIfContext("then", currentControlFlowBlock);
+        putCFBToIfContext("then", currentCFB);
     }
 
     @Override
     public void enterElseStatements(ProLangParser.ElseStatementsContext ctx) {
         setNewBlockToCurrent(new ArrayList<>());
 
-        getControlFlowBlockOnIfContext("if").setBranch(currentControlFlowBlock);
+        getCFBFromIfContext().setBranch(currentCFB);
     }
 
     @Override
     public void exitElseStatements(ProLangParser.ElseStatementsContext ctx) {
-        putControlFlowBlockOnIfContext("else", currentControlFlowBlock);
+        putCFBToIfContext("else", currentCFB);
     }
 
     @Override
@@ -63,14 +65,14 @@ public class ControlFlowGraphListener extends ProLangBaseListener {
 
     @Override
     public void enterStatementIf(ProLangParser.StatementIfContext ctx) {
-        statementIfContextLevel++;
-        statementIfContexts.put(statementIfContextLevel, new HashMap<>());
+        ifContextLevel++;
+        ifContexts.put(ifContextLevel, new HashMap<>());
     }
 
     @Override
     public void exitStatementIf(ProLangParser.StatementIfContext ctx) {
         var newBlock = createCFBlock(new ArrayList<>());
-        var ifElseBlocks = statementIfContexts.get(statementIfContextLevel);
+        var ifElseBlocks = ifContexts.get(ifContextLevel);
 
         ifElseBlocks.get("then").setNext(newBlock);
         if (ifElseBlocks.get("else") == null) {
@@ -79,59 +81,59 @@ public class ControlFlowGraphListener extends ProLangBaseListener {
             ifElseBlocks.get("else").setNext(newBlock);
         }
 
-        currentControlFlowBlock = newBlock;
-        statementIfContextLevel--;
+        currentCFB = newBlock;
+        ifContextLevel--;
     }
 
     @Override
     public void enterStatementWhile(ProLangParser.StatementWhileContext ctx) {
-        statementWhileContextLevel++;
-        statementWhileContexts.put(statementWhileContextLevel, new HashMap<>());
-        statementBreakContexts.put(statementWhileContextLevel, new ArrayList<>());
+        whileContextLevel++;
+        whileContexts.put(whileContextLevel, new HashMap<>());
+        breakWhileContexts.put(whileContextLevel, new ArrayList<>());
     }
 
     @Override
     public void exitStatementWhile(ProLangParser.StatementWhileContext ctx) {
         var newBlock = createCFBlock(new ArrayList<>());
-        var ifWhile = statementWhileContexts.get(statementWhileContextLevel);
-        var breaks = statementBreakContexts.get(statementWhileContextLevel);
+        var ifWhile = whileContexts.get(whileContextLevel);
+        var breaks = breakWhileContexts.get(whileContextLevel);
 
         ifWhile.get("while").setBranch(newBlock);
         ifWhile.get("statements").setNext(ifWhile.get("while"));
 
         breaks.forEach(b -> b.setNext(newBlock));
 
-        currentControlFlowBlock = newBlock;
-        statementWhileContextLevel--;
+        currentCFB = newBlock;
+        whileContextLevel--;
     }
 
     @Override
     public void enterWhileCondition(ProLangParser.WhileConditionContext ctx) {
         setNewBlockToCurrent(Collections.singletonList(ctx.getText()));
-        statementWhileContexts.get(statementWhileContextLevel).put("while", currentControlFlowBlock);
+        whileContexts.get(whileContextLevel).put("while", currentCFB);
     }
 
     @Override
     public void enterWhileStatements(ProLangParser.WhileStatementsContext ctx) {
         setNewBlockToCurrent(new ArrayList<>());
 
-        statementWhileContexts.get(statementWhileContextLevel).get("while").setNext(currentControlFlowBlock);
+        whileContexts.get(whileContextLevel).get("while").setNext(currentCFB);
     }
 
     @Override
     public void exitWhileStatements(ProLangParser.WhileStatementsContext ctx) {
-        statementWhileContexts.get(statementWhileContextLevel).put("statements", currentControlFlowBlock);
+        whileContexts.get(whileContextLevel).put("statements", currentCFB);
     }
 
     @Override
     public void enterStatementBreak(ProLangParser.StatementBreakContext ctx) {
         setNewBlockToCurrent(Collections.singletonList(ctx.getText()));
-        statementBreakContexts.get(statementWhileContextLevel).add(currentControlFlowBlock);
+        breakWhileContexts.get(whileContextLevel).add(currentCFB);
     }
 
     @Override
     public String toString() {
-        return controlFlowBlocks.values().stream().map(ControlFlowBlock::toString).collect(Collectors.joining("\n\n"));
+        return controlFlowGraph.values().stream().map(ControlFlowBlock::toString).collect(Collectors.joining("\n\n"));
     }
 
     private int getNextBlockId() {
@@ -140,31 +142,31 @@ public class ControlFlowGraphListener extends ProLangBaseListener {
 
     private ControlFlowBlock createCFBlock(List<String> text) {
         var newBlock = new ControlFlowBlock(getNextBlockId(), null, null, text);
-        controlFlowBlocks.put(newBlock.getId(), newBlock);
+        controlFlowGraph.put(newBlock.getId(), newBlock);
 
         return newBlock;
     }
 
     private ControlFlowBlock getCFBlock() {
-        if (currentControlFlowBlock == null) {
-            currentControlFlowBlock = createCFBlock(new ArrayList<>());
+        if (currentCFB == null) {
+            currentCFB = createCFBlock(new ArrayList<>());
         }
-        return currentControlFlowBlock;
+        return currentCFB;
     }
 
     private void setNewBlockToCurrent(List<String> text) {
         var newBlock = createCFBlock(text);
-        currentControlFlowBlock.setNext(newBlock);
+        currentCFB.setNext(newBlock);
 
-        currentControlFlowBlock = newBlock;
+        currentCFB = newBlock;
     }
     
-    private void putControlFlowBlockOnIfContext(String key, ControlFlowBlock controlFlowBlock) {
-        statementIfContexts.get(statementIfContextLevel).put(key, controlFlowBlock);
+    private void putCFBToIfContext(String key, ControlFlowBlock controlFlowBlock) {
+        ifContexts.get(ifContextLevel).put(key, controlFlowBlock);
     }
 
-    private ControlFlowBlock getControlFlowBlockOnIfContext(String key) {
-        return statementIfContexts.get(statementIfContextLevel).get(key);
+    private ControlFlowBlock getCFBFromIfContext() {
+        return ifContexts.get(ifContextLevel).get("if");
     }
 }
 
