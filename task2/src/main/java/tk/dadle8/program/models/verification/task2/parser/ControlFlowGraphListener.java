@@ -19,6 +19,7 @@ public class ControlFlowGraphListener extends ProLangBaseListener {
 
     private Map<Integer, Map<String, ControlFlowBlock>> ifBlocks = new HashMap<>();
     private Map<Integer, Map<String, ControlFlowBlock>> whileBlocks = new HashMap<>();
+    private Map<Integer, List<ControlFlowBlock>> breakBlocks = new HashMap<>();
 
     public ControlFlowGraphListener() {
     }
@@ -58,16 +59,6 @@ public class ControlFlowGraphListener extends ProLangBaseListener {
     public void enterStatementExpr(ProLangParser.StatementExprContext ctx) {
         var block = getCFBlock();
         block.getText().add(ctx.getText());
-
-        if (ctx.getParent() instanceof ProLangParser.ThenStatementsContext && block.getNext() == null) {
-            ifBlocks.get(ifLevel).put("then", block);
-        }
-        if (ctx.getParent() instanceof ProLangParser.ElseStatementsContext && block.getNext() == null) {
-            ifBlocks.get(ifLevel).put("else", block);
-        }
-        if (ctx.getParent() instanceof ProLangParser.WhileStatementsContext && block.getNext() == null) {
-            whileBlocks.get(whileLevel).put("statements",block);
-        }
     }
 
     @Override
@@ -92,15 +83,19 @@ public class ControlFlowGraphListener extends ProLangBaseListener {
     public void enterStatementWhile(ProLangParser.StatementWhileContext ctx) {
         whileLevel++;
         whileBlocks.put(whileLevel, new HashMap<>());
+        breakBlocks.put(whileLevel, new ArrayList<>());
     }
 
     @Override
     public void exitStatementWhile(ProLangParser.StatementWhileContext ctx) {
         var newBlock = createCFBlock(new ArrayList<>());
         var ifWhile = whileBlocks.get(whileLevel);
+        var breaks = breakBlocks.get(whileLevel);
 
         ifWhile.get("while").setBranch(newBlock);
         ifWhile.get("statements").setNext(ifWhile.get("while"));
+
+        breaks.forEach(b -> b.setNext(newBlock));
 
         currentFlowBlock = newBlock;
         whileLevel--;
@@ -122,6 +117,12 @@ public class ControlFlowGraphListener extends ProLangBaseListener {
     @Override
     public void exitWhileStatements(ProLangParser.WhileStatementsContext ctx) {
         whileBlocks.get(whileLevel).put("statements", currentFlowBlock);
+    }
+
+    @Override
+    public void enterStatementBreak(ProLangParser.StatementBreakContext ctx) {
+        setNewBlockToCurrent(Collections.singletonList(ctx.getText()));
+        breakBlocks.get(whileLevel).add(currentFlowBlock);
     }
 
     @Override
