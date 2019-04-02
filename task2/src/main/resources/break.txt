@@ -1,0 +1,13 @@
+function test(first, second)
+    b = 2;
+
+    while x > 5
+        r = 10;
+
+        if x < 3 then
+            break
+        end if
+    wend
+
+    y = 10;
+end function

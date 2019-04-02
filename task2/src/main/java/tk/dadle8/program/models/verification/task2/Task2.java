@@ -25,6 +25,7 @@ public class Task2 {
 
         ControlFlowGraphListener listener = new ControlFlowGraphListener();
         ParseTreeWalker.DEFAULT.walk(listener, tree);
-        parserUtils.writeFile(listener.toString(), "task2/out/result.txt");
+        parserUtils.writeFile(listener.toString(), "task2/out/result" +
+                ".txt");
     }
 }
