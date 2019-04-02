@@ -6,9 +6,9 @@ import java.io.InputStream;
 
 public class ParserUtils {
 
-    public InputStream getFile() {
+    public InputStream getFile(String name) {
         ClassLoader classLoader = getClass().getClassLoader();
-        return classLoader.getResourceAsStream("text.txt");
+        return classLoader.getResourceAsStream(name);
     }
 
     public void writeFile(String text, String pathToFile) {

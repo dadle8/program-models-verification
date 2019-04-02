@@ -1,0 +1,14 @@
+function test(first, second)
+    b = 2;
+
+    if x > y then
+        while x > 5
+            r = 10;
+        wend
+        c = t;
+    else
+        a = b;
+    end if
+
+    y = 10;
+end function

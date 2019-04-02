@@ -18,7 +18,7 @@ public class Task1 {
 
         ParserUtils parserUtils = new ParserUtils();
 
-        ProLangLexer lexer = new ProLangLexer(CharStreams.fromStream(parserUtils.getFile()));
+        ProLangLexer lexer = new ProLangLexer(CharStreams.fromStream(parserUtils.getFile("text.txt")));
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         ProLangParser parser = new ProLangParser(tokens);
         ParseTree tree = parser.source();

@@ -1,0 +1,39 @@
+id# 0
+b=2;
+next# 1
+branch# 
+
+id# 1
+x>y
+next# 2
+branch# 6
+
+id# 2
+
+next# 3
+branch# 
+
+id# 3
+x>5
+next# 4
+branch# 5
+
+id# 4
+r=10;
+next# 3
+branch# 
+
+id# 5
+c=t;
+next# 7
+branch# 
+
+id# 6
+a=b;
+next# 7
+branch# 
+
+id# 7
+y=10;
+next# 
+branch# 

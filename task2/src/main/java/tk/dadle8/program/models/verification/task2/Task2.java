@@ -18,13 +18,13 @@ public class Task2 {
 
         ParserUtils parserUtils = new ParserUtils();
 
-        ProLangLexer lexer = new ProLangLexer(CharStreams.fromStream(parserUtils.getFile()));
+        ProLangLexer lexer = new ProLangLexer(CharStreams.fromStream(parserUtils.getFile("while_in_if.txt")));
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         ProLangParser parser = new ProLangParser(tokens);
         ParseTree tree = parser.source();
 
         ControlFlowGraphListener listener = new ControlFlowGraphListener();
         ParseTreeWalker.DEFAULT.walk(listener, tree);
-        parserUtils.writeFile(listener.toString(), "task2/out/result.txt");
+        parserUtils.writeFile(listener.toString(), "task2/out/result_while_in_if.txt");
     }
 }
