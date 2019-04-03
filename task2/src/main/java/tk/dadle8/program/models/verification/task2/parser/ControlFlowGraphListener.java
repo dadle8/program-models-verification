@@ -1,5 +1,6 @@
 package tk.dadle8.program.models.verification.task2.parser;
 
+import org.antlr.v4.runtime.ParserRuleContext;
 import tk.dadle8.program.models.verification.task1.antlr4.ProLangBaseListener;
 import tk.dadle8.program.models.verification.task1.antlr4.ProLangParser;
 import tk.dadle8.program.models.verification.task2.model.ControlFlowBlock;
@@ -16,6 +17,7 @@ public class ControlFlowGraphListener extends ProLangBaseListener {
 
     private int ifContextLevel = 0;
     private int whileContextLevel = 0;
+    private int doContextLevel = 0;
 
     private Map<Integer, Map<String, ControlFlowBlock>> ifContexts = new HashMap<>();
     private Map<Integer, Map<String, ControlFlowBlock>> whileContexts = new HashMap<>();
@@ -92,6 +94,13 @@ public class ControlFlowGraphListener extends ProLangBaseListener {
     }
 
     @Override
+    public void enterStatementDo(ProLangParser.StatementDoContext ctx) {
+        doContextLevel++;
+        doContexts.put(doContextLevel, new HashMap<>());
+        breakDoContexts.put(doContextLevel, new ArrayList<>());
+    }
+
+    @Override
     public void exitStatementWhile(ProLangParser.StatementWhileContext ctx) {
         setNewBlockToCurrent(new ArrayList<>());
         var ifWhile = whileContexts.get(whileContextLevel);
@@ -126,7 +135,18 @@ public class ControlFlowGraphListener extends ProLangBaseListener {
     @Override
     public void enterStatementBreak(ProLangParser.StatementBreakContext ctx) {
         setNewBlockToCurrent(Collections.singletonList(ctx.getText()));
-        breakWhileContexts.get(whileContextLevel).add(currentCFB);
+        if (isWhileStatementParent(ctx)) {
+            breakWhileContexts.get(whileContextLevel).add(currentCFB);
+        } else {
+            breakDoContexts.get(doContextLevel).add(currentCFB);
+        }
+    }
+
+    private boolean isWhileStatementParent(ParserRuleContext ctx) {
+        if (ctx.getParent() instanceof ProLangParser.StatementWhileContext) {
+            return true;
+        }
+        return isWhileStatementParent(ctx.getParent());
     }
 
     @Override
